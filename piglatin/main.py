@@ -1,3 +1,5 @@
+"""Pig Latin Translation Microservice."""
+
 from flask import render_template, request, Response
 from piglatin import app, cross_origin
 
