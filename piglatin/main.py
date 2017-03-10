@@ -2,14 +2,12 @@
 
 from flask import render_template, request, Response
 from piglatin import app, cross_origin
+import converter
 
-
-@app.route('/', methods=['GET','POST'])
+@app.route('/', methods=['POST'])
 @cross_origin()
 def index():
-    txt = None
     if request.method == 'POST':
         body = request.json
-        txt = body["body"]
-        print body["body"]
-    return render_template('result.html', text= txt)
+        resp = converter.convert_text(body["body"])
+    return Response(resp, mimetype="text/plain")

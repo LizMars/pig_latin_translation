@@ -1,19 +1,31 @@
 """Pig Latin Text Conterter."""
-from string import punctuation
+
+from string import punctuation, ascii_letters
 
 def is_punctuation(word):
     return len(set(punctuation) & set(word))
 
+def is_letters_only(word):
+    return len(set(ascii_letters) & set(word))
+
 def punctiation_handl(word):
     special_chars = set(punctuation)
+    if word[-1] not in special_chars:
+        return plain_word_handl(word)
+
     for i in special_chars:
         idx = word.find(i)
         if idx != -1:
             return plain_word_handl(word[:idx]) + word[idx:]
+#lst = ['sh', 'gl', 'ch', 'ph', 'tr', 'br', 'fr', 'bl', 'gr', 'st', 'sl', 'cl', 'pl', 'fl']
 
 def plain_word_handl(word):
-    consonants = set("bcdfghjklmnpqrstvwxyz")
+    vowels = set("aeiou")
+    consonants = set("bcdfghjklmnpqrstvwxyz"+"bcdfghjklmnpqrstvwxyz".upper())
     new_word = list(word)
+    if word[0] in vowels:
+        return word + "yay"
+
     for letter in word:
         if letter in consonants:
             temp = new_word.pop(0)
@@ -26,20 +38,18 @@ def convert_text(text):
     new_text = []
     for word in text.split(" "):
         new_text.append(convert_word(word))
-
-
     return " ".join(new_text)
 
 def convert_word(word):
-    title = False
-    if word.istitle():
-        word.lower()
-        title = True
-
-    if not word.isalpha():
+    if not is_letters_only(word): #if word contained no ascii_letters (only numbers and punctuation)
         return word
 
-    elif is_punctuation(word):
+    title = False
+    if word.istitle():
+        word = word.lower()
+        title = True
+
+    if is_punctuation(word):
         if title:
             return punctiation_handl(word).capitalize()
         else:
@@ -51,14 +61,9 @@ def convert_word(word):
             return plain_word_handl(word)
 
 
-
-
 def test(switch):
     w = ["pig", "banana", "trash", "happy", "duck", "glove", "eat", "omlet", "are"]
-    text = '''Listen on port, 80 and accept a string that contains at least
-    one word, but potentially entire paragraphs. Convert the words in the
-    string: to Pig Latin and return the results in the HTTP message body!?
-    * Preserve all of the punctuation in the original string.'''
+    text = '''Hello, my name is haha - is haha, Is 2017 Awesome Gram M&N I am Charlie's beast mama my friend!'''
 
     if switch == "word":
         for i in w:
@@ -67,11 +72,8 @@ def test(switch):
         print text
         print convert_text(text)
 
-
-
 def main():
-    #word, text
-    test("text")
+    pass
 
 if __name__ == '__main__':
     main()
