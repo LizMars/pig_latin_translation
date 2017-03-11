@@ -14,7 +14,7 @@ pip install piglatin
 ###Run microservice:
 
 ```
-sudo python run.py
+sudo piglatin
 ```
 
 ###Run unit tests
@@ -26,5 +26,5 @@ python tests/test_piglatin.py
 ###Test POST request
 
 ```
-http -a POST "127.0.0.1:80" body='test sentence'
+http POST "0.0.0.0:80" < test.txt
 ```
