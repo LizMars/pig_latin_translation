@@ -1,4 +1,4 @@
-"""Pig Latin Text Conterter."""
+"""Pig Latin Text Converter."""
 
 from string import punctuation, ascii_letters, whitespace
 import re
@@ -8,17 +8,6 @@ def is_punctuation(word):
 
 def is_letters_only(word):
     return len(set(ascii_letters) & set(word))
-
-def punctiation_handl(word):
-    special_chars = set(punctuation)
-
-
-
-    for i in special_chars:
-        idx = word.find(i)
-        if idx != -1:
-            return plain_word_handl(word[:idx]) + word[idx:]
-
 
 def plain_word_handl(word):
     vowels = set("aeiou")
@@ -38,8 +27,8 @@ def plain_word_handl(word):
 def convert_text(text):
     regexp = r"[\w']+|[{punc}{space}]".format(punc=punctuation, space=whitespace)
     tokens = re.findall(regexp, text)
-    print tokens
     new_text = [convert_word(token) for token in tokens]
+    print "".join(new_text)
     return "".join(new_text)
 
 def convert_word(word):
