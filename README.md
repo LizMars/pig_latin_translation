@@ -1,45 +1,47 @@
 # pig_latin_translation
+##Pig Latin Translation Microservice
 
-Tools used:
+###Tools used:
 - python 2.7
 - pew
 - flask
 - httpie
 
-Instructions for installing and running the microservice and test suite.
+####Instructions for installing and running the microservice and test suite.
 
 
-1. Install pew (details: https://github.com/berdario/pew):
-`pip install pew`
+1. Install pew (details: [More about pew installation](https://github.com/berdario/pew) ):
 
-2. Create a new environment, in $WORKON_HOME.
+  `pip install pew`
 
-`usage: pew new [-hd] [-p PYTHON] [-i PACKAGES] [-a PROJECT] [-r REQUIREMENTS] envname`
+2. Create a new environment, in `$WORKON_HOME`.
 
-`pew new piglatin`
+  `usage: pew new [-hd] [-p PYTHON] [-i PACKAGES] [-a PROJECT] [-r REQUIREMENTS] envname`
+
+  `pew new piglatin`
 
 3. Use created virtual environment
 
-`usage: pew workon [environment_name]`
+  `usage: pew workon [environment_name]`
 
-`pew workon piglatin`
+  `pew workon piglatin`
 
 4. Install tools:
 
-- wed framework:
-`pip install Flask`
+  - wed framework:
+    `pip install Flask`
 
-- The Cross-Origin Resource Sharing (CORS) mechanism gives web servers
-cross-domain access controls, which enable secure cross-domain data transfers.
+  - The Cross-Origin Resource Sharing (CORS) mechanism gives web servers
+  cross-domain access controls, which enable secure cross-domain data transfers.
 
-`pip install -U flask-cors`
+    `pip install -U flask-cors`
 
-- Testing tool
+  - Testing tool
 
-`pip install httpie`
+    `pip install httpie`
 
 5. Run microservice:
 
-`sudo python run.py`
+  `sudo python run.py`
 
 6. Run test suite.
