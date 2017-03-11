@@ -26,5 +26,5 @@ python tests/test_piglatin.py
 ###Test POST request
 
 ```
-http POST "0.0.0.0:80" < test.txt
+curl -X POST -H "Content-Type:plain/text" -d "@test.txt" http://127.0.0.1
 ```
