@@ -8,6 +8,5 @@ import converter
 @cross_origin()
 def index():
     if request.method == 'POST':
-        body = request.json
-        resp = converter.convert_text(body["body"])
+        resp = converter.convert_text(request.data)
     return Response(resp, mimetype="text/plain")
