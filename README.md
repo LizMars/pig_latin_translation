@@ -4,9 +4,9 @@ Pig Latin Translation Microservice
 Tools used
 ----------
 
-- python 2.7
-- flask web framework
-- httpie
+- Python 2.7
+- Flask web framework
+- httpie client
 
 Installation
 ------------
@@ -37,5 +37,6 @@ python tests/test_piglatin.py
 ### Test POST request
 
 ```
-curl -X POST -H "Content-Type:plain/text" -d "@test.txt" http://127.0.0.1
+pip install httpie
+http 127.0.0.1 < text.txt
 ```
